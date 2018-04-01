@@ -1,0 +1,9 @@
+# --- Serving options --- #
+host: 0.0.0.0
+port: 4000
+
+# url is the full website URL
+# baseurl is the website's URL without the hostname
+
+url: "http://localhost:4000"
+baseurl: ""
