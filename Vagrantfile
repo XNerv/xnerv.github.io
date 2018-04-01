@@ -12,18 +12,18 @@ $script_provision = <<SCRIPT
   cd /vagrant
   bundle install
 
-  echo "#!/bin/bash"                               >  /usr/local/bin/jekyll-start.sh
-  echo "cd /vagrant"                               >> /usr/local/bin/jekyll-start.sh
-  echo "source /usr/local/rvm/scripts/rvm"         >> /usr/local/bin/jekyll-start.sh
-  echo "bundle exec jekyll serve --force_polling"  >> /usr/local/bin/jekyll-start.sh
-  chmod +x                                            /usr/local/bin/jekyll-start.sh
+  echo "#!/bin/bash"                       >  /usr/local/bin/jekyll-start.sh
+  echo "cd /vagrant"                       >> /usr/local/bin/jekyll-start.sh
+  echo "source /usr/local/rvm/scripts/rvm" >> /usr/local/bin/jekyll-start.sh
+  echo "JEKYLL_ENV=production bundle exec jekyll serve --force_polling --config _config.yml,_config_dev.yml"  >> /usr/local/bin/jekyll-start.sh
+  chmod +x                                 /usr/local/bin/jekyll-start.sh
  
   echo Provisioned!!!
 SCRIPT
 
 Vagrant.configure("2") do |config|
   # Base box.
-  config.vm.box = "xnerv/standard-debian-7.9.0-i386.box"
+  config.vm.box = "xnerv/standard-debian-8-i386.box"
   
   # Shared folders.
   config.vm.synced_folder "./", "/vagrant"
